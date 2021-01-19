@@ -11,9 +11,11 @@ jobs:
     - name: Run sync
       run: python sync.py
     - name: stage changed files
-      run: git add log.txt
-    - name: commit changed files
-      run: git commit -m "Auto sync"
+      run: |
+        git add log.txt
+        git config --local user.email "mlcommons-bot@mlcommons.org"
+        git config --local user.name  "mlcommons-bot"
+        git commit -m "Auto sync"
     - name: fetch from master
       run: git fetch origin master
     - name: push code to master
