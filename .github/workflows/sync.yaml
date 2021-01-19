@@ -1,0 +1,20 @@
+name: Sync
+
+on: [push, pull_request]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Run sync
+      run: python sync.py
+    - name: stage changed files
+      run: git add log.txt
+    - name: commit changed files
+      run: git commit -m "Auto sync"
+    - name: fetch from master
+      run: git fetch origin master
+    - name: push code to master
+      run: git push origin HEAD:master
