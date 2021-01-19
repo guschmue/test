@@ -17,6 +17,6 @@ jobs:
         git config --local user.name  "mlcommons-bot"
         git commit -m "Auto sync"
     - name: fetch from master
-      run: git fetch origin master
+      run: git fetch
     - name: push code to master
-      run: git push origin HEAD:master
+      run: git push
